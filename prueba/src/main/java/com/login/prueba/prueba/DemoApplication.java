@@ -20,21 +20,6 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@RequestMapping(value="/user")
-	public User user(OAuth2Authentication principal) {
-
-		List array = new ArrayList(((LinkedHashMap) ((UsernamePasswordAuthenticationToken) ((OAuth2Authentication) principal).getUserAuthentication()).getDetails()).values());;
-
-		User user = new User();
-		user.setId((String)array.get(0));
-		user.setEmail((String)array.get(1));
-		user.setCompleteName((String)array.get(3));
-		user.setFirstName((String)array.get(4));
-		user.setLastName((String)array.get(5));
-		user.profileImage((String)array.get(6));
-		user.setTokenType(((OAuth2AuthenticationDetails) principal.getDetails()).getTokenType());
-		user.setTokenValue(((OAuth2AuthenticationDetails) principal.getDetails()).getTokenValue());
-		return user;
-	}
+	
 
 }
